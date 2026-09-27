@@ -1,0 +1,12 @@
+{
+  "name": "grow-up-morph",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "아기·엄마·아빠 사진으로 5~20년 후 얼굴을 모핑으로 보여주는 로컬 웹앱",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

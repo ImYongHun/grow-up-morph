@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>우리 아이 성장 미리보기</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👶</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>우리 아이 <em>성장 미리보기</em></h1>
+    <p>아기 · 엄마 · 아빠 사진을 올리면 5년, 10년, 20년 뒤 얼굴을 보여줘요.</p>
+  </header>
+
+  <main>
+    <section class="panel" id="setup">
+      <div class="uploads">
+        <label class="drop" data-role="baby">
+          <input type="file" accept="image/*" hidden />
+          <div class="thumb"><span class="ph">👶</span></div>
+          <strong>아기 사진</strong>
+          <small>정면 얼굴</small>
+        </label>
+        <label class="drop" data-role="mom">
+          <input type="file" accept="image/*" hidden />
+          <div class="thumb"><span class="ph">👩</span></div>
+          <strong>엄마 사진</strong>
+          <small>정면 얼굴</small>
+        </label>
+        <label class="drop" data-role="dad">
+          <input type="file" accept="image/*" hidden />
+          <div class="thumb"><span class="ph">👨</span></div>
+          <strong>아빠 사진</strong>
+          <small>정면 얼굴</small>
+        </label>
+      </div>
+
+      <div class="options">
+        <div class="field">
+          <span class="label">아기 성별</span>
+          <div class="seg" id="sex">
+            <button data-v="boy" class="on">남자아이</button>
+            <button data-v="girl">여자아이</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">현재 아기 나이</span>
+          <div class="inline">
+            <input type="number" id="babyMonths" min="0" max="48" value="6" /> 개월
+          </div>
+        </div>
+        <div class="field wide">
+          <span class="label">누구를 더 닮을까?</span>
+          <div class="mix">
+            <span>엄마</span>
+            <input type="range" id="dadRatio" min="0" max="100" value="50" />
+            <span>아빠</span>
+            <output id="dadRatioOut">반반</output>
+          </div>
+        </div>
+        <div class="field wide">
+          <span class="label">생성 방식</span>
+          <div class="seg" id="provider">
+            <button data-v="local" class="on">로컬 모핑 <small>무료·즉시</small></button>
+            <button data-v="openai">AI · OpenAI <small>사실적</small></button>
+            <button data-v="gemini">AI · Gemini <small>사실적</small></button>
+          </div>
+          <p class="hint" id="providerHint"></p>
+        </div>
+      </div>
+
+      <button id="generate" class="primary" disabled>성장 모습 만들기</button>
+      <div id="progress" class="progress" hidden></div>
+    </section>
+
+    <section class="panel viewer" id="viewer" hidden>
+      <div class="stage">
+        <canvas id="stage"></canvas>
+        <div class="badge" id="ageBadge">지금</div>
+      </div>
+
+      <div class="timeline">
+        <input type="range" id="years" min="0" max="20" step="0.01" value="0" />
+        <div class="ticks" id="ticks"></div>
+      </div>
+
+      <div class="controls">
+        <button id="play" class="ghost">▶ 자동 재생</button>
+        <button id="savePng" class="ghost">📷 이 장면 저장</button>
+        <button id="saveVideo" class="ghost">🎬 성장 영상 저장</button>
+        <button id="restart" class="ghost">↺ 다시 만들기</button>
+      </div>
+
+      <div class="strip" id="strip"></div>
+    </section>
+  </main>
+
+  <footer>사진은 이 컴퓨터(브라우저)와 선택한 AI 서비스 외에는 어디에도 전송되지 않아요.</footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
