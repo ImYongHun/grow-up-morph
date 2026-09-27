@@ -20,8 +20,8 @@
 ### 실행
 
 ```bash
-git clone https://github.com/<계정>/<저장소>.git
-cd <저장소>
+git clone https://github.com/ImYongHun/grow-up-morph.git
+cd grow-up-morph
 
 npm start          # → http://localhost:5173
 # 또는 개발 모드(파일 변경 시 서버 자동 재시작)
